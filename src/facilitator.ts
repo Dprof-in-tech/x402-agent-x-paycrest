@@ -204,10 +204,10 @@ export const handleCreateIntent = async (req: Request, res: Response) => {
         const { amountNGN, account, bank, accountName } = req.body;
         
         const intent = await createPaymentIntent(
-            amountNGN || 5000, 
-            account || '0123456789', 
-            bank || 'palmpay', 
-            accountName || 'Isaac Test'
+            amountNGN || 1000, // Smaller amount for testing (~0.7 USDC)
+            account || '3210199515', 
+            bank || 'FBNINGLA', 
+            accountName || 'UGWU ISAAC ONYEMAECHI'
         );
 
         const payload: PaymentPayload = {

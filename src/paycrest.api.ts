@@ -79,8 +79,8 @@ export const createOrder = async (amountNGN: number, account: string, bankNameOr
         const orderPayload = {
             token: "USDC",
             network: "base",
-            amount: Number(amountUSDC),
-            rate: rate,
+            amount: amountUSDC, // Send as string for precision, like the dashboard does
+            rate: String(rate),
             providerId: 'zmLQezZk', // Targeted staging provider
             recipient: {
                 accountIdentifier: account,
