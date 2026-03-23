@@ -1,0 +1,12 @@
+{
+  "name": "Antigravity x402 Agent",
+  "operatorWallet": "0x335e1f8e909e4fd985c4641642d5a963",
+  "erc8004Identity": "https://basescan.org/tx/0x05a0b1726becb2761626e7e7b78cf0d42d099dbeb5a15a27159f43a1f84e3258",
+  "supportedTools": ["Ethers.js", "Viem", "Paycrest SDK", "x402 Facilitator API"],
+  "techStacks": ["Node.js", "TypeScript", "Express"],
+  "computeConstraints": {
+    "maxRuntimeSeconds": 300,
+    "memoryLimitMB": 512
+  },
+  "taskCategories": ["Payments", "Bridge", "Real-World Assets", "Agent Services"]
+}
