@@ -4,12 +4,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const api = axios.create({
-    baseURL: process.env.PAYCREST_API_URL || 'https://api.paycrest.io/v1',
+    baseURL: process.env.PAYCREST_API_URL || 'https://staging-api.paycrest.io/v1',
     headers: {
-        'API-Key': process.env.PAYCREST_API_KEY, // Correct header per docs
+        'API-Key': process.env.PAYCREST_API_KEY || '',
         'Content-Type': 'application/json'
     }
 });
+
+// Debug: Check if keys are loaded (on Vercel, this will show in logs)
+if (!process.env.PAYCREST_API_KEY) {
+    console.warn('⚠️ WARNING: PAYCREST_API_KEY is missing from environment variables!');
+}
 
 export const getQuote = async () => {
     // Fetch rate for 1 USDC to NGN
