@@ -72,7 +72,7 @@ PAYCREST_API_KEY=your_api_key_here
 PAYCREST_API_URL=https://api.paycrest.io/v1
 
 # Facilitator settings
-FACILITATOR_URL=http://localhost:3000
+FACILITATOR_URL=https://x402-agent-x-paycrest.vercel.app
 PORT=3000
 
 # Resource server (for examples)
@@ -136,7 +136,7 @@ app.get('/api/premium-data', async (req, res) => {
   }
 
   // Verify payment with facilitator
-  const verifyResult = await axios.post('http://localhost:3000/verify', {
+  const verifyResult = await axios.post('https://x402-agent-x-paycrest.vercel.app/verify', {
     x402Version: 1,
     paymentHeader,
     paymentRequirements: { /* same as above */ }
@@ -147,7 +147,7 @@ app.get('/api/premium-data', async (req, res) => {
   }
 
   // Settle payment
-  await axios.post('http://localhost:3000/settle', {
+  await axios.post('https://x402-agent-x-paycrest.vercel.app/settle', {
     x402Version: 1,
     paymentHeader,
     paymentRequirements: { /* same as above */ }
@@ -246,7 +246,7 @@ Returns supported payment schemes.
 ```
 
 **Headers:**
-- `Accept-Pay: ngn+paycrest+http://localhost:3000/v1`
+- `Accept-Pay: ngn+paycrest+https://x402-agent-x-paycrest.vercel.app/v1`
 
 ### `POST /verify`
 

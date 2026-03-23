@@ -67,9 +67,11 @@ This is a standardized API that any merchant can use to accept crypto payments w
     -   `POST /verify`: Checks if a payment intent is valid.
     -   `POST /settle`: Executes the fiat settlement.
     -   `GET /supported`: Lists supported payment schemes (e.g., `ngn+paycrest`).
+-   `POST /create-intent`: Helper to generate x402 headers for testing.
 
 ### Why it Wins
 It solves the "Chicken and Egg" problem. Merchants won't accept crypto because it's hard. Agents can't pay fiat because they don't have bank accounts. This Facilitator solves both.
+Live at: [https://x402-agent-x-paycrest.vercel.app/](https://x402-agent-x-paycrest.vercel.app/)
 
 ---
 
