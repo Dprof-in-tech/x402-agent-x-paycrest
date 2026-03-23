@@ -81,6 +81,7 @@ export const createOrder = async (amountNGN: number, account: string, bankNameOr
             network: "base",
             amount: Number(amountUSDC),
             rate: rate,
+            providerId: 'zmLQezZk', // Targeted staging provider
             recipient: {
                 accountIdentifier: account,
                 institution: institutionCode, // Use resolved code
