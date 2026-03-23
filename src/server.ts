@@ -19,7 +19,11 @@ app.post('/webhook', handleWebhook);
 
 // Root endpoint for discovery
 app.get('/', (req, res) => {
-    const facilitatorUrl = process.env.FACILITATOR_URL || 'http://localhost:3000';
+    // Dynamically determine the base URL (Host/Vercel)
+    const protocol = req.headers['x-forwarded-proto'] || 'http';
+    const host = req.headers.host || 'localhost:3000';
+    const facilitatorUrl = process.env.FACILITATOR_URL || `${protocol}://${host}`;
+
     res.set('Accept-Pay', `ngn+paycrest+${facilitatorUrl}/v1`)
         .json({
             name: "x402-NGN Facilitator",
@@ -35,7 +39,7 @@ app.get('/', (req, res) => {
                 settle: `${facilitatorUrl}/settle`,
                 webhook: `${facilitatorUrl}/webhook`
             },
-            documentation: "https://github.com/paycrest/x402-ngn-facilitator"
+            documentation: "https://github.com/Dprof-in-tech/x402-agent-x-paycrest"
         });
 });
 

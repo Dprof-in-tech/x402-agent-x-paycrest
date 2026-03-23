@@ -9,3 +9,4 @@ yarn-error.log*
 .synthesis-credentials
 .antigravity/
 brain/
+.vercel
