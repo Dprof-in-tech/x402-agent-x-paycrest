@@ -79,18 +79,18 @@ export const createOrder = async (amountNGN: number, account: string, bankNameOr
         const orderPayload = {
             token: "USDC",
             network: "base",
-            amount: amountUSDC, // Send as string for precision, like the dashboard does
+            amount: amountUSDC, 
             rate: String(rate),
-            providerId: 'zmLQezZk', // Targeted staging provider
+            providerId: 'zmLQezZk',
             recipient: {
                 accountIdentifier: account,
-                institution: institutionCode, // Use resolved code
+                institution: institutionCode,
                 accountName: accountName,
                 currency: "NGN",
                 memo: "x402 payment"
             },
-            reference: `x402-${Date.now()}`, // Unique reference
-            returnAddress: "0x0000000000000000000000000000000000000000" // Optional but good practice
+            reference: "", // Dashboard used empty reference
+            returnAddress: "0x0000000000000000000000000000000000000000"
         };
 
         console.log('🚀 Sending Paycrest Order Payload:', JSON.stringify(orderPayload, null, 2));
