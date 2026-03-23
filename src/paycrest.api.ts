@@ -76,7 +76,7 @@ export const createOrder = async (amountNGN: number, account: string, bankNameOr
         const amountUSDC = (amountNGN / rate).toFixed(6); // Ensure precision
 
         // 3. Create Order
-        const res = await api.post('/sender/orders', {
+        const orderPayload = {
             token: "USDC",
             network: "base",
             amount: Number(amountUSDC),
@@ -90,7 +90,11 @@ export const createOrder = async (amountNGN: number, account: string, bankNameOr
             },
             reference: `x402-${Date.now()}`, // Unique reference
             returnAddress: "0x0000000000000000000000000000000000000000" // Optional but good practice
-        });
+        };
+
+        console.log('🚀 Sending Paycrest Order Payload:', JSON.stringify(orderPayload, null, 2));
+
+        const res = await api.post('/sender/orders', orderPayload);
 
         // Map response to what our handler expects
         // Handler expects: { id, depositAddress, sendAmount, expiresAt }
