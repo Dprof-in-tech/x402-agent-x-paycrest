@@ -93,8 +93,6 @@ export const createOrder = async (amountNGN: number, account: string, bankNameOr
             returnAddress: "0x0000000000000000000000000000000000000000"
         };
 
-        console.log('🚀 Sending Paycrest Order Payload:', JSON.stringify(orderPayload, null, 2));
-
         const res = await api.post('/sender/orders', orderPayload);
 
         // Map response to what our handler expects
