@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     // Dynamically determine the base URL (Host/Vercel)
     const protocol = req.headers['x-forwarded-proto'] || 'http';
     const host = req.headers.host || 'localhost:3000';
-    const facilitatorUrl = process.env.FACILITATOR_URL || `${protocol}://${host}`;
+    const facilitatorUrl = (process.env.FACILITATOR_URL || `${protocol}://${host}`).replace(/\/$/, '');
 
     res.set('Accept-Pay', `ngn+paycrest+${facilitatorUrl}/v1`)
         .json({

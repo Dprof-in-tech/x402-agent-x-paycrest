@@ -16,7 +16,7 @@ import { SwapRouter } from '@uniswap/v3-sdk'; // Placeholder for Uniswap alignme
 // @ts-ignore
 import { MetaMaskInpageProvider } from "@metamask/providers"; // Placeholder for MetaMask alignment
 
-const FACILITATOR_URL = process.env.FACILITATOR_URL || 'http://localhost:3000';
+const FACILITATOR_URL = (process.env.FACILITATOR_URL || 'http://localhost:3000').replace(/\/$/, '');
 
 /**
  * GET /supported
