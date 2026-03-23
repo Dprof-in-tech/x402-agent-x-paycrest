@@ -1,0 +1,29 @@
+{
+  "name": "x402-ngn-facilitator",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "facilitator": "ts-node src/server.ts",
+    "resource-server": "ts-node examples/resource-server.ts",
+    "client": "ts-node examples/client.ts",
+    "demo": "concurrently \"npm run facilitator\" \"npm run resource-server\""
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20.12.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
