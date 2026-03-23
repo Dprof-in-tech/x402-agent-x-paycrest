@@ -207,7 +207,7 @@ export const handleCreateIntent = async (req: Request, res: Response) => {
             amountNGN || 1000, // Smaller amount for testing (~0.7 USDC)
             account || '3210199515', 
             bank || 'FBNINGLA', 
-            accountName || 'UGWU ISAAC ONYEMAECHI'
+            accountName || 'Ugwu Isaac Onyemaechi'
         );
 
         const payload: PaymentPayload = {
