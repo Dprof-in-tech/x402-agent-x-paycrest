@@ -31,8 +31,10 @@ export async function verifyNgnPaycrest(
             return { isValid: false, invalidReason: 'Invalid scheme. Expected ngn+paycrest' };
         }
 
-        if (payload.network !== 'base') {
-            return { isValid: false, invalidReason: 'Invalid network. Only Base is supported' };
+        // Use network from payload or requirements (case-insensitive)
+        const network = (payload.network || requirements.network || '').toLowerCase();
+        if (network !== 'base') {
+            return { isValid: false, invalidReason: `Invalid network (${network}). Only Base is supported` };
         }
 
         // 2. Validate payload structure
