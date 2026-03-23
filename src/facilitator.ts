@@ -8,7 +8,7 @@ import {
     SettleResponse,
     SupportedResponse
 } from './types';
-import { verifyNgnPaycrest, settleNgnPaycrest } from './schemes/ngn-paycrest';
+import { verifyNgnPaycrest, settleNgnPaycrest, createPaymentIntent } from './schemes/ngn-paycrest';
 
 // Partner Integrations (Synthesis Hackathon Alignment)
 // @ts-ignore
@@ -193,4 +193,34 @@ export const handleWebhook = async (req: Request, res: Response) => {
     console.log(`Order ${orderId} status: ${status}, txHash: ${txHash}`);
 
     res.json({ received: true });
+};
+
+/**
+ * POST /create-intent
+ * Utility endpoint to generate a valid x402 payment header for testing/demo
+ */
+export const handleCreateIntent = async (req: Request, res: Response) => {
+    try {
+        const { amountNGN, account, bank, accountName } = req.body;
+        
+        const intent = await createPaymentIntent(
+            amountNGN || 5000, 
+            account || '0123456789', 
+            bank || 'palmpay', 
+            accountName || 'Isaac Test'
+        );
+
+        const payload: PaymentPayload = {
+            x402Version: 1,
+            scheme: 'ngn+paycrest',
+            network: 'base',
+            payload: intent
+        };
+
+        const header = Buffer.from(JSON.stringify(payload)).toString('base64');
+        res.json({ paymentHeader: header, decoded: payload });
+
+    } catch (error: any) {
+        res.status(500).json({ error: error.message });
+    }
 };

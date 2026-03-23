@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import { getSupportedSchemes, verifyPayment, settlePayment, handleWebhook } from './facilitator';
+import { getSupportedSchemes, verifyPayment, settlePayment, handleWebhook, handleCreateIntent } from './facilitator';
 
 dotenv.config();
 
@@ -16,6 +16,7 @@ app.get('/supported', getSupportedSchemes);
 app.post('/verify', verifyPayment);
 app.post('/settle', settlePayment);
 app.post('/webhook', handleWebhook);
+app.post('/create-intent', handleCreateIntent);
 
 // Root endpoint for discovery
 app.get('/', (req, res) => {
